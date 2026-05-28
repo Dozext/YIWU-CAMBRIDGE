@@ -1035,13 +1035,15 @@ footer {
 }
 
 .footer-links ul li a {
-    color: var(--text-light);
+    color: #ffffff; 
     text-decoration: none;
     transition: var(--transition);
+    opacity: 0.8; 
 }
 
 .footer-links ul li a:hover {
-    color: var(--primary-color);
+    color: #ffffff; 
+    opacity: 1; 
     padding-left: 6px;
 }
 
