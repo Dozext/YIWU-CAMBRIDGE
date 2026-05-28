@@ -1126,3 +1126,18 @@ footer {
 .socios-track:hover {
     animation-play-state: paused;
 }
+/* FORZAR ESTILOS EN EL FOOTER */
+footer ul {
+    list-style-type: none !important; 
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+footer a {
+    color: #ffffff !important; 
+    text-decoration: none !important; 
+}
+
+footer a:hover {
+    color: #a0aec0 !important; 
+}
