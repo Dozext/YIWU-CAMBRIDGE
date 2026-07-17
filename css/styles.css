@@ -108,14 +108,86 @@ header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(19,58,2
 .step-content h3 { font-size: 1.2rem; margin-bottom: 8px; }
 .step-content p { color: var(--text-light); }
 
-.warehouse-section { background: var(--brand-blue); }
-.warehouse-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-.check-list { list-style: none; margin-top: 24px; }
-.check-list li { display: flex; align-items: center; gap: 10px; color: #fff; margin-bottom: 12px; }
-.check-list i { color: var(--accent); }
-.warehouse-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.warehouse-gallery img { width: 100%; height: 190px; object-fit: cover; border-radius: 16px; border: 1px solid var(--card-border); box-shadow: 0 12px 26px rgba(0,0,0,.22); }
-.warehouse-gallery img:first-child { grid-column: span 2; height: 260px; }
+/* ALMACÉN Y CONTROL DE CALIDAD */
+.warehouse-section {
+    background: var(--brand-blue);
+}
+
+.warehouse-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 56px;
+    align-items: center;
+}
+
+.warehouse-content h2 {
+    font-size: clamp(2.2rem, 4.4vw, 4rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    max-width: 640px;
+}
+
+.warehouse-content p {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 620px;
+    margin-bottom: 26px;
+}
+
+.check-list {
+    list-style: none;
+    margin-top: 24px;
+}
+
+.check-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+.check-list i {
+    color: var(--accent);
+}
+
+.warehouse-gallery {
+    width: 100%;
+}
+
+.warehouse-gallery-two {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+.warehouse-photo {
+    position: relative;
+    width: 100%;
+    height: 430px;
+    overflow: hidden;
+    border-radius: 22px;
+    border: 1px solid var(--card-border);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow);
+}
+
+.warehouse-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.warehouse-photo:hover img {
+    transform: scale(1.04);
+}
 
 .futian-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 50px; align-items: center; }
 .futian h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; text-transform: uppercase; margin-bottom: 20px; }
@@ -191,10 +263,38 @@ footer a:hover { opacity: 1; text-decoration: underline; }
     .nav-dropdown { width: 100%; text-align: center; }
     .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; display: none; margin-top: 10px; min-width: auto; width: 100%; background: rgba(8,26,128,.45); box-shadow: none; }
     .nav-dropdown.open .dropdown-menu { display: block; }
-    .advantages-grid, .about-grid, .warehouse-grid, .futian-grid, .contact-grid { grid-template-columns: 1fr; }
-    .services-grid, .testimonial-grid { grid-template-columns: 1fr; }
-    .cta-strip-content { flex-direction: column; text-align: center; }
-    .warehouse-gallery img, .warehouse-gallery img:first-child { height: auto; grid-column: auto; }
+
+    .advantages-grid,
+    .about-grid,
+    .warehouse-grid,
+    .futian-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-strip-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .warehouse-grid {
+        gap: 36px;
+    }
+
+    .warehouse-gallery-two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .warehouse-photo {
+        height: 360px;
+        border-radius: 18px;
+    }
+
     .futian-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .footer-grid { grid-template-columns: 1fr; }
 }
@@ -214,6 +314,20 @@ footer a:hover { opacity: 1; text-decoration: underline; }
     .features-grid, .futian-stats { grid-template-columns: 1fr; }
     .floating-whatsapp { right: 14px; bottom: 14px; padding: 13px 15px; }
     .floating-whatsapp span { display: none; }
+
+    .warehouse-content h2 {
+        font-size: 2.15rem;
+    }
+
+    .warehouse-gallery-two {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .warehouse-photo {
+        height: 320px;
+        border-radius: 18px;
+    }
 }
 
 /* AJUSTES SOLICITADOS: servicios, recorridos, ruta y carrusel */
@@ -287,17 +401,17 @@ footer a:hover { opacity: 1; text-decoration: underline; }
     z-index: 2;
 }
 
-.mujer{
-    position:absolute;
-    bottom:18px;
-    left:50%;
-    height:250px;
-    width:auto;
-    z-index:5;
-    transform:translateX(-50%) scale(1.55);
+.mujer {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    height: 320px;
+    width: auto;
+    z-index: 5;
+    transform: translateX(-50%) scale(1.2);
     transform-origin: bottom center;
-    animation:caminar 1s infinite alternate;
-    filter:drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+    animation: caminar 1s infinite alternate;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
 }
 
 @keyframes moverLocales {
@@ -305,12 +419,13 @@ footer a:hover { opacity: 1; text-decoration: underline; }
     to { transform: translateX(-50%); }
 }
 
-@keyframes caminar{
-    from{
-        transform:translateX(-50%) scale(1.55) translateY(0px);
+@keyframes caminar {
+    from {
+        transform: translateX(-50%) scale(1.05) translateY(0px);
     }
-    to{
-        transform:translateX(-50%) scale(1.55) translateY(-8px);
+
+    to {
+        transform: translateX(-50%) scale(1.05) translateY(-6px);
     }
 }
 
@@ -398,14 +513,14 @@ footer a:hover { opacity: 1; text-decoration: underline; }
 
 .barco {
     position: absolute;
-    width: 140px;
+    width: 115px;
     height: auto;
     top: 0;
     left: 0;
     z-index: 8;
     filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
 
-    offset-path: path("M 950 150 Q 720 250 520 325 T 210 425");
+    offset-path: path("M 930 165 Q 710 270 520 335 T 230 420");
     offset-distance: 0%;
     offset-rotate: 0deg;
     animation: moverBarcoRuta 11s linear infinite;
@@ -462,14 +577,14 @@ footer a:hover { opacity: 1; text-decoration: underline; }
     }
 
     .mujer {
-        height: 170px;
+        height: 210px;
         width: auto;
         max-width: none;
-        transform: translateX(-50%) scale(1.25);
+        transform: translateX(-50%) scale(1.05);
     }
 
     .barco {
-        width: 55px;
+        width: 78px;
     }
 
     .pin {
