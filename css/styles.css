@@ -492,6 +492,7 @@ footer a:hover { opacity: 1; text-decoration: underline; }
     z-index: 5;
     box-shadow: 0 0 20px rgba(255,77,109,.85);
     animation: pulsePin 2s infinite;
+    transform: translate(-50%, -50%);
 }
 
 .pin::after {
@@ -505,34 +506,76 @@ footer a:hover { opacity: 1; text-decoration: underline; }
     left: 8px;
 }
 
-@keyframes pulsePin {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.22); opacity: .75; }
-    100% { transform: scale(1); opacity: 1; }
+/* Pines en porcentajes para que funcionen en PC y celular */
+.pin-china {
+    top: 25%;
+    left: 86%;
 }
 
+.pin-africa {
+    top: 60%;
+    left: 55%;
+}
+
+.pin-latam {
+    top: 80%;
+    left: 34%;
+}
+
+.pin-pacifico {
+    top: 88%;
+    left: 16%;
+}
+
+@keyframes pulsePin {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.22);
+        opacity: .75;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Barco responsivo: ya no usa offset-path en pixeles */
 .barco {
     position: absolute;
-    width: 115px;
+    width: clamp(75px, 10vw, 130px);
     height: auto;
-    top: 0;
-    left: 0;
     z-index: 8;
+    left: 82%;
+    top: 33%;
+    transform: translate(-50%, -50%);
     filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
-
-    offset-path: path("M 930 165 Q 710 270 520 335 T 230 420");
-    offset-distance: 0%;
-    offset-rotate: 0deg;
-    animation: moverBarcoRuta 11s linear infinite;
+    animation: moverBarcoRuta 12s linear infinite;
 }
 
 @keyframes moverBarcoRuta {
     0% {
-        offset-distance: 0%;
+        left: 82%;
+        top: 33%;
+    }
+
+    35% {
+        left: 58%;
+        top: 51%;
+    }
+
+    70% {
+        left: 36%;
+        top: 70%;
     }
 
     100% {
-        offset-distance: 100%;
+        left: 18%;
+        top: 82%;
     }
 }
 
@@ -584,7 +627,7 @@ footer a:hover { opacity: 1; text-decoration: underline; }
     }
 
     .barco {
-        width: 78px;
+        width: 82px;
     }
 
     .pin {
