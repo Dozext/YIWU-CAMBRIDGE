@@ -67,17 +67,43 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHeaderAndStepper();
 
     const quoteForm = document.getElementById('quote-form');
+    const emailButton = document.getElementById('email-submit');
+
+    const buildQuoteLines = (data) => ({
+        nombre: data.get('nombre') || '',
+        pais: data.get('pais') || '',
+        productos: data.get('productos') || '',
+        cantidad: data.get('cantidad') || '',
+        telefono: data.get('telefono') || ''
+    });
+
     if (quoteForm) {
         quoteForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const data = new FormData(quoteForm);
+            const l = buildQuoteLines(data);
             const message = `Hola, quiero solicitar una cotización desde Yiwu.%0A%0A` +
-                `Nombre: ${encodeURIComponent(data.get('nombre') || '')}%0A` +
-                `País: ${encodeURIComponent(data.get('pais') || '')}%0A` +
-                `Productos buscados: ${encodeURIComponent(data.get('productos') || '')}%0A` +
-                `Cantidad aproximada: ${encodeURIComponent(data.get('cantidad') || '')}%0A` +
-                `Teléfono / WhatsApp: ${encodeURIComponent(data.get('telefono') || '')}`;
+                `Nombre: ${encodeURIComponent(l.nombre)}%0A` +
+                `País: ${encodeURIComponent(l.pais)}%0A` +
+                `Productos buscados: ${encodeURIComponent(l.productos)}%0A` +
+                `Cantidad aproximada: ${encodeURIComponent(l.cantidad)}%0A` +
+                `Teléfono / WhatsApp: ${encodeURIComponent(l.telefono)}`;
             window.open(`https://wa.me/8618606570511?text=${message}`, '_blank', 'noopener');
+        });
+    }
+
+    if (emailButton && quoteForm) {
+        emailButton.addEventListener('click', () => {
+            if (!quoteForm.reportValidity()) return;
+            const data = new FormData(quoteForm);
+            const l = buildQuoteLines(data);
+            const subject = `Solicitud de cotización - ${l.nombre}`;
+            const body = `Nombre: ${l.nombre}\n` +
+                `País: ${l.pais}\n` +
+                `Productos buscados: ${l.productos}\n` +
+                `Cantidad aproximada: ${l.cantidad}\n` +
+                `Teléfono / WhatsApp: ${l.telefono}`;
+            window.location.href = `mailto:info@yiwucambridge.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         });
     }
 });
