@@ -5,17 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Yiwu Cambridge simplifica la importación desde China para emprendedores y comerciantes de América Latina y Centroamérica.">
     <title>Yiwu Cambridge | Su oficina local de confianza en Yiwu</title>
+    <!-- Preconnect a dominios críticos de terceros (reduce latencia de handshake TLS) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Preload de la imagen LCP (hero background) — el recurso más grande del primer pantallazo.
+         Esto le indica al navegador que la descargue con máxima prioridad antes de procesar el CSS. -->
+    <link rel="preload" as="image" href="images/yiwu-hero.webp" fetchpriority="high">
+
+    <!-- Google Fonts con display=swap: el texto se renderiza con fuente del sistema
+         de inmediato y solo se reemplaza cuando Inter termina de descargarse.
+         Esto elimina el bloqueo de FOIT (Flash of Invisible Text). -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Font Awesome: se carga de forma NO bloqueante usando media="print" + onload trick.
+         El navegador descarga el CSS en segundo plano sin bloquear el render path. -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          media="print"
+          onload="this.media='all'">
+    <!-- Fallback para navegadores con JS desactivado -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+
+    <!-- CSS principal: es crítico para el render, va inline o como primer stylesheet.
+         Al ser pequeño y local, no requiere preload adicional. -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header id="header">
         <div class="container nav-container">
             <a href="index.html#inicio" class="logo-area" aria-label="Ir al inicio de Yiwu Cambridge">
-                <img src="images/logo-yiwu-cambridge.webp" alt="Logotipo de Yiwu Cambridge" class="logo-img" width="90" height="45">
+                <!-- Logo: above the fold, carga eager (sin lazy) para que no retrase el LCP -->
+                <img src="images/logo-yiwu-cambridge.webp" alt="Logotipo de Yiwu Cambridge" class="logo-img" width="90" height="45" loading="eager" fetchpriority="high">
                 <div class="logo-text">
                     <span class="logo-title">YIWU CAMBRIDGE</span>
                     <span class="logo-sub">Imp and Exp Co., Ltd</span>
@@ -95,7 +119,7 @@
         <section id="quienes-somos" class="about-section section-padding">
             <div class="container about-grid">
                 <div class="about-image-wrapper">
-                    <img src="images/dueno.webp" alt="Representante de Yiwu Cambridge en China" class="about-img" loading="lazy" width="500" height="650">
+                    <img src="images/dueno.webp" alt="Representante de Yiwu Cambridge en China" class="about-img" loading="lazy" width="500" height="650" decoding="async">
                 </div>
                 <div class="about-text-wrapper">
                     <span class="section-kicker">Quiénes Somos</span>
@@ -117,7 +141,7 @@
                     Contamos con un equipo preparado para acompañarle en cada etapa del proceso de compra, verificación y exportación desde China.
                 </p>
                 <div class="personal-image-card">
-                    <img src="images/socio1.webp" alt="Equipo de Yiwu Cambridge acompañando operaciones comerciales en China" class="personal-img" loading="lazy" width="900" height="600">
+                    <img src="images/socio1.webp" alt="Equipo de Yiwu Cambridge acompañando operaciones comerciales en China" class="personal-img" loading="lazy" width="900" height="600" decoding="async">
                 </div>
             </div>
         </section>
@@ -245,11 +269,11 @@
 
                 <div class="warehouse-gallery warehouse-gallery-two">
                     <div class="warehouse-photo">
-                        <img src="images/inspeccion.webp" alt="Inspección de mercancía y control de calidad" loading="lazy">
+                        <img src="images/inspeccion.webp" alt="Inspección de mercancía y control de calidad" loading="lazy" width="600" height="430" decoding="async">
                     </div>
 
                     <div class="warehouse-photo">
-                        <img src="images/inspeccion2.webp" alt="Preparación y consolidación de mercancía" loading="lazy">
+                        <img src="images/inspeccion2.webp" alt="Preparación y consolidación de mercancía" loading="lazy" width="600" height="430" decoding="async">
                     </div>
                 </div>
             </div>
@@ -296,7 +320,7 @@
                         <div class="tienda tienda5"></div>
                     </div>
                     <div class="locales-overlay"></div>
-                    <img class="mujer" src="images/processed.gif" alt="Representación de acompañamiento en recorrido por locales mayoristas" loading="lazy">
+                    <img class="mujer" src="images/processed.gif" alt="Representación de acompañamiento en recorrido por locales mayoristas" loading="lazy" width="250" height="320" decoding="async">
                 </div>
             </div>
         </section>
@@ -306,7 +330,7 @@
                 <h2 class="section-title">Ruta directa</h2>
                 <p class="section-subtitle">Coordinamos envíos marítimos y aéreos desde China hacia Latinoamérica y Centroamérica</p>
                 <div class="mapa-container">
-                    <img class="mapa" src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt="Mapa mundial de rutas comerciales desde China" loading="lazy">
+                    <img class="mapa" src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt="Mapa mundial de rutas comerciales desde China" loading="lazy" width="1200" height="650" decoding="async">
                     <svg viewBox="0 0 1200 650" aria-hidden="true">
                         <path class="ruta" d="M980 140 Q 790 250 610 320 T 190 500" />
                         <path class="ruta ruta-secundaria" d="M890 260 Q 670 365 465 425 T 130 540" />
@@ -316,7 +340,7 @@
                     <div class="pin pin-latam"></div>
                     <div class="pin pin-pacifico"></div>
 
-                    <img class="barco" src="images/barco_sin_margen.png" alt="Barco mercante en ruta internacional" loading="lazy">
+                    <img class="barco" src="images/barco_sin_margen.png" alt="Barco mercante en ruta internacional" loading="lazy" width="130" height="80" decoding="async">
                 </div>
             </div>
         </section>
@@ -327,24 +351,24 @@
                 <p class="section-subtitle">Algunos clientes y aliados satisfechos</p>
                 <div class="socios-carousel" aria-label="Carrusel de clientes y aliados">
                     <div class="socios-track">
-                        <div class="socio-card"><img src="images/socio2.webp" alt="Aliados y clientes acompañados por Yiwu Cambridge" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio3.webp" alt="Cliente satisfecho junto al equipo de Yiwu Cambridge" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio4.webp" alt="Grupo de clientes durante recorrido comercial en China" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio6.webp" alt="Clientes y aliados en actividad comercial" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio7.webp" alt="Acompañamiento comercial a clientes en China" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio8.webp" alt="Clientes de Yiwu Cambridge en reunión comercial" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio9.webp" alt="Aliados comerciales de Yiwu Cambridge" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio10.webp" alt="Clientes durante visita o reunión comercial" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio11.webp" alt="Clientes y equipo durante acompañamiento de importación" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio2.webp" alt="Aliados y clientes acompañados por Yiwu Cambridge" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio3.webp" alt="Cliente satisfecho junto al equipo de Yiwu Cambridge" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio4.webp" alt="Grupo de clientes durante recorrido comercial en China" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio6.webp" alt="Clientes y aliados en actividad comercial" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio7.webp" alt="Acompañamiento comercial a clientes en China" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio8.webp" alt="Clientes de Yiwu Cambridge en reunión comercial" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio9.webp" alt="Aliados comerciales de Yiwu Cambridge" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio10.webp" alt="Clientes durante visita o reunión comercial" loading="lazy"></div>
-                        <div class="socio-card"><img src="images/socio11.webp" alt="Clientes y equipo durante acompañamiento de importación" loading="lazy"></div>
+                        <div class="socio-card"><img src="images/socio2.webp" alt="Aliados y clientes acompañados por Yiwu Cambridge" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio3.webp" alt="Cliente satisfecho junto al equipo de Yiwu Cambridge" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio4.webp" alt="Grupo de clientes durante recorrido comercial en China" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio6.webp" alt="Clientes y aliados en actividad comercial" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio7.webp" alt="Acompañamiento comercial a clientes en China" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio8.webp" alt="Clientes de Yiwu Cambridge en reunión comercial" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio9.webp" alt="Aliados comerciales de Yiwu Cambridge" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio10.webp" alt="Clientes durante visita o reunión comercial" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio11.webp" alt="Clientes y equipo durante acompañamiento de importación" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio2.webp" alt="Aliados y clientes acompañados por Yiwu Cambridge" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio3.webp" alt="Cliente satisfecho junto al equipo de Yiwu Cambridge" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio4.webp" alt="Grupo de clientes durante recorrido comercial en China" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio6.webp" alt="Clientes y aliados en actividad comercial" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio7.webp" alt="Acompañamiento comercial a clientes en China" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio8.webp" alt="Clientes de Yiwu Cambridge en reunión comercial" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio9.webp" alt="Aliados comerciales de Yiwu Cambridge" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio10.webp" alt="Clientes durante visita o reunión comercial" loading="lazy" width="380" height="250" decoding="async"></div>
+                        <div class="socio-card"><img src="images/socio11.webp" alt="Clientes y equipo durante acompañamiento de importación" loading="lazy" width="380" height="250" decoding="async"></div>
                     </div>
                 </div>
             </div>
@@ -427,6 +451,8 @@
         <span>Solicite su cotización</span>
     </a>
 
-    <script src="js/script.js"></script>
+    <!-- defer: el script se descarga en paralelo pero se ejecuta solo después de que
+         el HTML está completamente parseado. Elimina cualquier bloqueo residual del render. -->
+    <script src="js/script.js" defer></script>
 </body>
 </html>
