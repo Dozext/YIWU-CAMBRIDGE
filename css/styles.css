@@ -156,6 +156,9 @@ header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(19,58,2
 
 .warehouse-gallery {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .warehouse-gallery-two {
