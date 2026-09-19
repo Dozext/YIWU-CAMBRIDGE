@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/webp" href="images/logo-yiwu-cambridge.webp">
+    <link rel="apple-touch-icon" href="images/logo-yiwu-cambridge.webp">
     <meta name="description" content="Yiwu Cambridge simplifica la importación desde China para emprendedores y comerciantes de América Latina y Centroamérica.">
     <title>Yiwu Cambridge | Su oficina local de confianza en Yiwu</title>
     <!-- Preconnect a dominios críticos de terceros (reduce latencia de handshake TLS) -->
@@ -33,11 +35,57 @@
     <!-- CSS principal: es crítico para el render, va inline o como primer stylesheet.
          Al ser pequeño y local, no requiere preload adicional. -->
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Datos estructurados: Schema.org Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Yiwu Cambridge",
+      "alternateName": "Yiwu Cambridge Imp and Exp Co., Ltd",
+      "url": "https://yiwucambridge.com",
+      "logo": "https://yiwucambridge.com/images/logo-yiwu-cambridge.webp",
+      "description": "Agente de abastecimiento, compras e importación en Yiwu, China. Búsqueda de proveedores, inspección de calidad, consolidación de carga y logística marítima hacia América Latina.",
+      "email": "info@yiwucambridge.com",
+      "telephone": "+593982367496",
+      "areaServed": ["América Latina"],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+593982367496",
+          "email": "info@yiwucambridge.com",
+          "availableLanguage": ["Spanish"],
+          "areaServed": "EC"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+8618606570511",
+          "email": "juan@yiwucambridge.com",
+          "availableLanguage": ["Spanish", "Chinese"],
+          "areaServed": "CN"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+593984081629",
+          "email": "tania@yiwucambridge.com",
+          "availableLanguage": ["Spanish"],
+          "areaServed": "EC"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/yiwu.cambridge",
+        "https://www.facebook.com/share/19SabVaLuq/"
+      ]
+    }
+    </script>
 </head>
 <body>
     <header id="header">
         <div class="container nav-container">
-            <a href="index.html#inicio" class="logo-area" aria-label="Ir al inicio de Yiwu Cambridge">
+            <a href="#inicio" class="logo-area" aria-label="Ir al inicio de Yiwu Cambridge">
                 <!-- Logo: above the fold, carga eager (sin lazy) para que no retrase el LCP -->
                 <img src="images/logo-yiwu-cambridge.webp" alt="Logotipo de Yiwu Cambridge" class="logo-img" width="90" height="45" loading="eager" fetchpriority="high">
                 <div class="logo-text">
@@ -48,21 +96,21 @@
 
             <nav aria-label="Navegación principal">
                 <ul class="nav-menu">
-                    <li><a href="index.html#inicio" class="nav-link active">Inicio</a></li>
-                    <li><a href="index.html#quienes-somos" class="nav-link">Quiénes Somos</a></li>
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="#quienes-somos" class="nav-link">Quiénes Somos</a></li>
                     <li class="nav-dropdown">
-                        <a href="index.html#servicios" class="nav-link">Nuestros Servicios <i class="fa-solid fa-chevron-down"></i></a>
+                        <a href="#servicios" class="nav-link">Nuestros Servicios <i class="fa-solid fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.html#busqueda-proveedores">Búsqueda de proveedores</a></li>
-                            <li><a href="index.html#control-calidad">Control de calidad y almacenaje</a></li>
-                            <li><a href="index.html#consolidacion">Consolidación de mercancías</a></li>
-                            <li><a href="index.html#logistica">Logística marítima y aérea</a></li>
-                            <li><a href="index.html#stock">Mercancía en stock</a></li>
+                            <li><a href="#busqueda-proveedores">Búsqueda de proveedores</a></li>
+                            <li><a href="#control-calidad">Control de calidad y almacenaje</a></li>
+                            <li><a href="#consolidacion">Consolidación de mercancías</a></li>
+                            <li><a href="#logistica">Logística marítima y aérea</a></li>
+                            <li><a href="#stock">Mercancía en stock</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html#como-trabajamos" class="nav-link">¿Cómo Trabajamos?</a></li>
-                    <li><a href="index.html#futian" class="nav-link">Mercado de Yiwu</a></li>
-                    <li><a href="index.html#clientes" class="nav-link">Clientes</a></li>
+                    <li><a href="#como-trabajamos" class="nav-link">¿Cómo Trabajamos?</a></li>
+                    <li><a href="#futian" class="nav-link">Mercado de Yiwu</a></li>
+                    <li><a href="#clientes" class="nav-link">Clientes</a></li>
                     <li><a href="contacto.html" class="nav-link">Contáctenos</a></li>
                 </ul>
             </nav>
@@ -383,9 +431,9 @@
             <div>
                 <h4>Enlaces rápidos</h4>
                 <ul>
-                    <li><a href="index.html#inicio">Inicio</a></li>
-                    <li><a href="index.html#servicios">Nuestros Servicios</a></li>
-                    <li><a href="index.html#futian">Mercado de Yiwu</a></li>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Nuestros Servicios</a></li>
+                    <li><a href="#futian">Mercado de Yiwu</a></li>
                     <li><a href="faq.html">Preguntas Frecuentes</a></li>
                     <li><a href="contacto.html">Contáctenos</a></li>
                 </ul>
